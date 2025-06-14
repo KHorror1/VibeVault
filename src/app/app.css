@@ -556,8 +556,4 @@ font-size: 13px;
     transform: translateY(-6px);
   }
 
-  html, body {
-  overflow: hidden;
-}
-
 }
