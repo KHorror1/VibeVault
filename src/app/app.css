@@ -1,0 +1,563 @@
+.container {
+  padding-top: 42px; /* Make room for the titlebar (adjust as needed) */
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 60px;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  min-height: 100vh;
+  background-color: var(--panel-color);
+  box-sizing: border-box;
+  overflow-y: auto; /* Optional: ensure scroll behavior */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+section {
+  margin-bottom: 30px;
+  border: 1px solid var(--border-color);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+input,
+select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: #2a2a2a;
+  color: var(--text-color);
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 16px;
+  margin: 6px 4px 0 0;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--accent);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #5c6bc0;
+}
+
+button:active {
+  background-color: #303f9f;
+}
+
+button.danger {
+  background-color: var(--danger);
+}
+
+button.danger:hover {
+  background-color: #d32f2f;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+li {
+  width: 100%;
+  background-color: #222;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  box-sizing: border-box;
+  position: relative;
+  transition: outline 0.25s ease-in-out, border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+  outline: none;
+}
+
+li:hover {
+  outline: 2px solid var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(92, 107, 192, 0.3); /* subtle glow effect */
+}
+
+
+li.selected {
+  outline: none;
+}
+
+.filename {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.filename span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  width: 100%;
+}
+
+li input {
+  margin-right: 10px;
+  width: 100%;
+}
+
+li div {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0;
+}
+
+.rename-map-block {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.rename-map-block input {
+  flex: 1;
+  min-width: 200px;
+  height: 42px;
+  margin-bottom: 0;
+  align-items: center;
+}
+
+.rename-save-btn {
+  height: 42px;
+  padding: 0 16px;
+  display: flex;
+  margin-top: 0px;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.star {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+.star-wrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.star-bg,
+.star-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.star-bg {
+  z-index: 1;
+  width: 100%;
+}
+
+.star-fill {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.15s ease;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ratings-toggle {
+  text-align: center;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 200px;
+}
+
+.toggle-btn {
+  background-color: gold;
+  color: black;
+  border: 2px solid white;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(255, 215, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.toggle-btn:hover {
+  transform: scale(1.05);
+}
+
+.average-box {
+  margin-top: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  color: gold;
+  background-color: #151515;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px rgba(255, 215, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.average-box .icon {
+  margin-right: 4px;
+}
+
+.average-box .value {
+  font-weight: bold;
+  margin-left: 6px;
+}
+
+.rated-blur {
+  opacity: 0.4;
+  filter: grayscale(80%) blur(0.7px);
+  transform: translateY(2px);
+  transition: all 0.3s ease;
+}
+
+.rated-blur .rating {
+  filter: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.entry-buttons {
+  display: flex;
+  align-items: center;
+  padding-bottom: 8px;
+  gap: 8px;
+}
+
+.content-wrap {
+  display: flex;
+  align-items: center; /* ✅ centers everything vertically */
+  justify-content: space-between;
+  flex: 1;
+  gap: 12px;
+}
+
+/* Apply blur only to the non-star content */
+.rated .content-wrap {
+  opacity: 0.4;
+  filter: blur(0.8px) grayscale(90%);
+  transform: translateY(1px);
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+
+/* Leave the stars clean */
+.rated .rating {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+.custom-titlebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  padding: 0 12px;
+  background-color: #1e1f22;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999; /* make sure it’s really above everything */
+  -webkit-app-region: drag;
+  user-select: none;
+}
+
+.app-title {
+  margin-left: 0;
+  padding-left: -1px; /* change this from 8px to 4px or even 0 */
+  font-size: 13px;
+  color: #ccc;
+  letter-spacing: 0.3px;
+  line-height: 1;
+  pointer-events: none;
+  -webkit-app-region: drag;
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+  margin-left: -10px; /* ✅ Pushes buttons to far right */
+  -webkit-app-region: no-drag;
+}
+
+/* Applies to all 3 buttons */
+.window-btn {
+  width: 36px;
+  height: 30px; 
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  border-radius: 0; 
+  margin-left: -10px;
+}
+
+.window-btn:hover {
+  background-color: #2a2b2f;
+}
+
+.icon-wrapper {
+font-size: 13px;
+  color: #aaa;
+  line-height: 1;
+  position: relative;
+  transform: translateY(0px);
+}
+
+.window-btn:hover .icon-wrapper {
+  color: #fff;
+}
+
+/* 🔴 Special red hover for close button */
+.window-btn.close-btn:hover {
+  background-color: #751515; /* soft dark red */
+}
+
+.app-logo-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 1px; 
+  margin: -10px 0 24px; 
+}
+
+.app-logo-center img {
+  height: 110px;
+  max-width: 300px;       
+  width: 100%;
+  object-fit: contain;
+  user-select: none;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 20px;
+}
+
+
+.form-inline {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.form-inline button {
+  margin-top: -10px; /* Tighten button alignment */
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;       /* tighter spacing */
+  margin-top: -28px;
+}
+
+#subfolder-actions {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+  margin-top: 12px;
+}
+
+#subfolder-actions input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+#subfolder-actions button {
+  margin: 0;
+  height: auto; /* matches input height */
+}
+
+.titlebar-left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex: 1;
+  padding-right: 100px;
+}
+
+.subfolder-rename-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  align-items: center;
+}
+
+.subfolder-rename-row input {
+  flex: 1;
+  height: 42px; /* Match button height */
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: #2a2a2a;
+  color: var(--text-color);
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.subfolder-rename-row button {
+  height: 42px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--accent);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 16px;
+}
+
+.subfolder-rename-row button:hover {
+  background-color: #5c6bc0;
+}
+
+.subfolder-rename-row button.danger {
+  background-color: var(--danger);
+}
+
+.subfolder-rename-row button.danger:hover {
+  background-color: #d32f2f;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.action-btn {
+  height: 42px;
+  min-width: 130px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--accent);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn:hover {
+  background-color: #5c6bc0;
+}
+
+.action-btn.danger {
+  background-color: var(--danger);
+}
+
+.action-btn.danger:hover {
+  background-color: #c62828;
+}
+
+.app-header {
+  margin-bottom: 32px;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 36px;
+  font-weight: bold;
+  color: gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  animation: fadeInScale 1s ease;
+}
+
+.emoji {
+  font-size: 42px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+
+  html, body {
+  overflow: hidden;
+}
+
+}
